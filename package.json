@@ -3,9 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^3.16.6",
+    "axios": "^0.18.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.0"
+    "react-images-upload": "^1.2.6",
+    "react-redux": "^7.0.3",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "3.0.0",
+    "react-time-ago": "^5.0.4",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "timeago-react": "^2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

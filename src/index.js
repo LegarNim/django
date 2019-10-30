@@ -1,10 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import { createStore, compose, applyMiddleware, combineReducers } from "redux";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import authReducer from "./store/reducers/auth";
+import lessonReducer from "./store/reducers/lessons";
+import assignmentReducer from "./store/reducers/assignments";
+import gradedAssignmentReducer from "./store/reducers/gradedAssignments";
+
+const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const rootReducer = combineReducers({
+  auth: authReducer,
+  lessons: lessonReducer,
+  assignments: assignmentReducer,
+  gradedAssignments: gradedAssignmentReducer
+});
+const store = createStore(rootReducer, composeEnhances(applyMiddleware(thunk)));
+
+const app = (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+
+ReactDOM.render(app, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
